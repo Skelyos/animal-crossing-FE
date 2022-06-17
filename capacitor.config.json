@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "animal-crossing-FE",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
