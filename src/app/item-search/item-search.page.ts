@@ -91,6 +91,6 @@ export class Tab1Page implements OnInit {
     if (gameValue?.sellPrice) {
       return `${gameValue.sellPrice?.value} ${gameValue.sellPrice?.currency}`; 
     }
-    return "Can not buy in-game.";
+    return "Can not sell item in-game.";
   }
 }
