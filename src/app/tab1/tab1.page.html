@@ -1,17 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <div class="menu-container">
+        <span>Item search</span>
+        <div>
+          <ion-searchbar animated debounce="500" (ionChange)="searchSpecificItem($event)"></ion-searchbar>
+        </div>
+      </div>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor="let item of itemListData">
+      <ion-label>
+        <ion-text>
+          <h2>{{item.name }}</h2>
+          <p>{{item.category | titlecase}}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more items..."> </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
