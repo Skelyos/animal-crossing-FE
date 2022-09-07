@@ -13,12 +13,15 @@
 
   <ion-list>
     <ion-item *ngFor="let item of itemListData">
-      <ion-label>
-        <ion-text>
-          <h2>{{item.name }}</h2>
-          <p>{{item.category | titlecase}}</p>
-        </ion-text>
-      </ion-label>
+      <div class="card-container">
+        <img class="item-thumb" [src]="item?.images?.thumb">
+        <div class="main-information">
+          <span class="header-info">{{item.category | titlecase}} - {{item.name }}</span>
+          <div *ngFor="let game of item.games | keyvalue">
+            <span class="pricing-info">{{convertGameKey(game?.key)}} Price: {{getBuyPrice(game?.value)}}</span>
+          </div>
+        </div>
+      </div>
     </ion-item>
   </ion-list>
 

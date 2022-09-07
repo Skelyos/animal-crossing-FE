@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-item-search',
+  templateUrl: 'item-search.page.html',
+  styleUrls: ['item-search.page.scss'],
 })
 export class Tab1Page implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
@@ -55,7 +55,7 @@ export class Tab1Page implements OnInit {
       this.currentPageNumber = 0;
       this.itemListData = res;
 
-      console.log(res.length);
+      console.log(res);
     });
   }
 
@@ -64,5 +64,33 @@ export class Tab1Page implements OnInit {
     this.currentPageNumber = 1;
     this.itemListData = [];
     this.getAllItems();
+  }
+
+  convertGameKey(key) {
+    switch (key) {
+      case "nl":
+        return 'New Leaf';
+      case "nh":
+        return 'New Horizon';
+      case "cf":
+        return 'City Folk';
+      case "ww":
+        return 'Wild World';
+      case "afe+":
+        return 'Animal Forest e+';
+      case "ac":
+        return 'Animal Crossing';
+
+      default:
+        console.log(key);
+        return 'Unknown Game Found...';
+    }
+  }
+
+  getBuyPrice(gameValue) {
+    if (gameValue?.sellPrice) {
+      return `${gameValue.sellPrice?.value} ${gameValue.sellPrice?.currency}`; 
+    }
+    return "Can not buy in-game.";
   }
 }
