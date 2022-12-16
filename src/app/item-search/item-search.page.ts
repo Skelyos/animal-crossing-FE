@@ -43,13 +43,14 @@ export class Tab1Page implements OnInit {
     }
   }
 
-  searchSpecificItem(searchValue: CustomEvent) {
-    if (!searchValue?.detail?.value) {
+  searchSpecificItem(userEvent: Event) {
+    const searchValue = (userEvent as CustomEvent).detail?.value;
+    if (!searchValue) {
       this.clearItems();
       return;
     }
 
-    const searchItemsUrl = `https://api.churchofiron.co.uk/items/search?search_text=${searchValue?.detail?.value}`;
+    const searchItemsUrl = `https://api.churchofiron.co.uk/items/search?search_text=${searchValue}`;
     this.http.get(searchItemsUrl).subscribe((res: any) => {
       this.infiniteScroll.disabled = true;
       this.currentPageNumber = 0;
@@ -68,17 +69,17 @@ export class Tab1Page implements OnInit {
 
   convertGameKey(key) {
     switch (key) {
-      case "nl":
+      case 'nl':
         return 'New Leaf';
-      case "nh":
+      case 'nh':
         return 'New Horizon';
-      case "cf":
+      case 'cf':
         return 'City Folk';
-      case "ww":
+      case 'ww':
         return 'Wild World';
-      case "afe+":
+      case 'afe+':
         return 'Animal Forest e+';
-      case "ac":
+      case 'ac':
         return 'Animal Crossing';
 
       default:
@@ -91,6 +92,6 @@ export class Tab1Page implements OnInit {
     if (gameValue?.sellPrice) {
       return `${gameValue.sellPrice?.value} ${gameValue.sellPrice?.currency}`; 
     }
-    return "Can not sell item in-game.";
+    return 'Cannot sell item in-game.';
   }
 }
