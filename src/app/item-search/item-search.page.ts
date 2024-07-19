@@ -55,8 +55,6 @@ export class Tab1Page implements OnInit {
       this.infiniteScroll.disabled = true;
       this.currentPageNumber = 0;
       this.itemListData = res;
-
-      console.log(res);
     });
   }
 
@@ -83,7 +81,6 @@ export class Tab1Page implements OnInit {
         return 'Animal Crossing';
 
       default:
-        console.log(key);
         return 'Unknown Game Found...';
     }
   }
