@@ -3,10 +3,7 @@
   <ion-header>
     <ion-toolbar>
       <div class="menu-container">
-        <span>Item search</span>
-        <div>
-          <ion-searchbar animated debounce="500" (ionChange)="searchSpecificItem($event)"></ion-searchbar>
-        </div>
+        <ion-searchbar animated placeholder="Search item name..." debounce="500" (ionChange)="searchSpecificItem($event)"></ion-searchbar>
       </div>
     </ion-toolbar>
   </ion-header>
