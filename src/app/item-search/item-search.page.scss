@@ -1,5 +1,9 @@
 .menu-container {
   padding: 0 12px;
+
+  ion-searchbar.ios {
+    padding-top: 12px;
+  }
 }
 
 .item-thumb {
